@@ -7,15 +7,6 @@ const app = express();
 dotenv.config({ path: "./config.env" });
 const PORT = process.env.PORT || 3001;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
-app.use(routes);
-
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/googlebookssearch",
   {
@@ -25,6 +16,16 @@ mongoose.connect(
     useUnifiedTopology: true
   }
 );
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+app.use(routes);
+
 
 // Start the API server
 app.listen(PORT, function() {
