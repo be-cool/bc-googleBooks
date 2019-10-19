@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AnchorLink = ({ children }) => (
-  <a hrer="/">{ children }</a>
+  <a href="/">{ children }</a>
 )
 
 export default AnchorLink;
