@@ -7,9 +7,9 @@ const Books = () => {
   const [search, setSearch] = useState("");
   const [books, setBooks] = useState([]);
 
-  // useEffect(() => {
-  //   if (search) API.searchBook(search).then(res => setBooks(res.data.items));
-  // }, [search]);
+  useEffect(() => {
+    if (search) API.searchBook(search).then(res => setBooks(res.data.items));
+  }, [search]);
 
   const handleFormSubmit = event => {
     event.preventDefault();
